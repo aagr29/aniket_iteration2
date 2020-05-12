@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>emotion</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="mood.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">MemForever</a>
+            <!-- icon here  -->
+            <svg class="bi bi-heart" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 01.176-.17C12.72-3.042 23.333 4.867 8 15z" clip-rule="evenodd" />
+            </svg>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                    </li>
+                </ul>
+                <select data-placeholder="Choose a Language...">
+                    <option value="ZH">Chinese (Mandarin)</option>
+                    <option value="EN">English</option>
+                </select>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <br>
+        <br>
+
+        <div class="col-md-12">
+            <h6 class="display-4">Tell us how do you feel today ?</h6></div>
+        <br>
+        <h5>High means you feel that emotion to maximum, low means you feel less of the particular emotion. ❤️
+        </h5>
+        <br>
+        <br>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 emotion-card">
+
+                    <h3>Satisfied</h3>
+                    <img src="mood_2.png" alt="">
+                    <br>
+                    <br>
+
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-success active">
+                          <input type="radio" name="options" class="emotion-record-btn" data-emotion-type="1" id="option1" autocomplete="off" > High
+                        </label>
+                        <label class="btn btn-warning">
+                          <input type="radio" name="options" class="emotion-record-btn" data-emotion-type="2"  id="option2" autocomplete="off"> Medium
+                        </label>
+                        <label class="btn btn-danger">
+                          <input type="radio" name="options" class="emotion-record-btn" data-emotion-type="3"  id="option3" autocomplete="off"> Low
+                        </label>
+                    </div>
+                   
+                </div>
+                <div class="col-md-6 emotion-card">
+                    <h3>Cheerful</h3>
+                    <img src="mood_1.png" alt="">
+                    <br>
+                    <br>
+
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-success active">
+                          <input type="radio" name="options" class="emotion-record-btn" data-emotion-type="4"  id="option1" autocomplete="off" > High
+                        </label>
+                        <label class="btn btn-warning">
+                          <input type="radio" name="options" class="emotion-record-btn" data-emotion-type="5"  id="option2" autocomplete="off"> Medium
+                        </label>
+                        <label class="btn btn-danger">
+                          <input type="radio" name="options" class="emotion-record-btn" data-emotion-type="6"  id="option3" autocomplete="off"> Low
+                        </label>
+                    </div>
+                
+                </div>
+                <br>
+                <div class="col-md-6 emotion-card">
+                    <h3>Sad</h3>
+                    <img src="mood_4.png" alt="">
+                    <br>
+                    <br>
+               
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-success active">
+                          <input type="radio" name="options" class="emotion-record-btn" data-emotion-type="-2"  id="option1" autocomplete="off" > High
+                        </label>
+                        <label class="btn btn-warning">
+                          <input type="radio" name="options" class="emotion-record-btn" data-emotion-type="-1"  id="option2" autocomplete="off"> Medium
+                        </label>
+                        <label class="btn btn-danger">
+                          <input type="radio" name="options" class="emotion-record-btn" data-emotion-type="0"  id="option3" autocomplete="off"> Low
+                        </label>
+                    </div>
+                </div>
+                <br>
+                <div class="col-md-6 emotion-card">
+                    <h3>Angry</h3>
+                    <img src="mood_3.png" alt="">
+                    <br>
+                    <br>
+
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-success active">
+                          <input type="radio" name="options" class="emotion-record-btn" data-emotion-type="-5"  id="option1" autocomplete="off" > High
+                        </label>
+                        <label class="btn btn-warning">
+                          <input type="radio" name="options" class="emotion-record-btn" data-emotion-type="-4"  id="option2" autocomplete="off"> Medium
+                        </label>
+                        <label class="btn btn-danger">
+                          <input type="radio" name="options" class="emotion-record-btn" data-emotion-type="-3"  id="option3" autocomplete="off"> Low
+                        </label>
+                    </div>
+            
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <!-- Copyright -->
+        <!-- ❤️  -->
+        <br>
+        <hr>
+        <br>
+        <div class="footer-copyright text-center">&copy; Developed with ❤️
+            <a class="white-text"> <strong>team name</strong> </a>.
+        </div>
+        <br>
+        <br>
+        <!-- Copyright -->
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        $(document).on("change", ".emotion-record-btn", function() {
+            $.post("/set_mood", {mood_score: parseInt($(this).data("emotion-type"))}, function(result){
+                window.location = "/";
+            });
+
+
+        });
+    </script>
+</body>
+
+</html>
