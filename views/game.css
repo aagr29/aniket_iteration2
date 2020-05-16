@@ -1,0 +1,112 @@
+/* *, *::before, *::after{
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    
+    } */
+
+  
+    
+    :root{
+        --hue-neutral:200;
+        --hue-wrong:0;
+        --hue-correct:140;
+    }
+    
+    main{
+        --hue: var(--hue-neutral);
+        padding: 0;
+        margin: 0;
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(181, 159, 241);
+        /* background-image: linear-gradient(-225deg, #9EFBD3 0%, #57E9F2 48%, #45D4FB 100%); */
+    }
+    
+    body.correct{
+    
+        --hue: var(--hue-correct);
+    }
+    
+    body.wrong{
+    
+        /* --hue: var(--hue-wrong); */
+        --hue: var(--hue-wrong);
+        
+    }
+    
+    .container{
+    
+        width: 800px;
+        max-width:80%;
+        /* background-color:#ffffb3; */
+        background-color:rgb(246, 248, 113);
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 0 0 10px 1px;
+    }
+    
+    .btn-grid{
+    
+        display: grid;
+        grid-template-columns: repeat(2,auto);
+        gap:10px;
+        margin: 20px 0;
+    
+    }
+    
+    .btn{
+    
+        --hue: var(--hue-neutral);
+        border-radius: 5px; 
+        border: 2px solid rgb(242, 131, 28);
+        background-color: rgb(237, 242, 245);
+    }
+    
+    .btn:hover{
+    
+        border-color: #f9f7fa;
+    }
+    
+    .btn.correct{
+      background: rgb(32, 247, 182);
+      
+      
+    /* --hue: var(--hue-correct); */
+    }
+    
+    .btn.wrong{
+    background-color: #fcf9fae3;
+        /* --hue: var(--hue-wrong);   */
+    }
+    
+    .start-btn, .next-btn{
+        font-size: 1.5rem;
+        /* font-weight: bolder; */
+        padding: 0;
+        margin: 0;
+        display: flex;
+        width: 15vw;
+        height: 15vh;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .control{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      
+    }
+    
+    .hide{
+    
+        display:none;
+    }
+    
+    #endgame{
+    color: black;
+        
+    }

@@ -67,7 +67,22 @@ app.get('/login', (req, res) =>{
     res.render('display',{user:val});
 });//displays sesssion values
 
+app.get('/home', (req, res) =>{
+  res.render('home');
+});
+// log out get request
 
+app.get('/logout',(req,res,next)=>{
+  if(req.session){
+    req.session.destroy((error)=>{
+      if(error){
+        next(error)
+      }else{
+        res.redirect('/')
+      }
+    })
+  }
+})
 // post for registration page
 app.post('/registration',(req,res) => {
 
@@ -136,17 +151,57 @@ app.post('/registration',(req,res) => {
 
  app.post('/set_mood', function(req, res){
   let mood_score=req.body.mood_score
-
+  let userId=req.session.user.userId
   console.log(mood_score);
 
-  db.none('INSERT INTO mood (mood_score) VALUES($1)',[mood_score])
+  db.none('INSERT INTO mood (mood_score,userid) VALUES($1,$2)',[mood_score,userId])
   .then(()=>{
-  res.redirect("/")
+    res.render("mood")//takes to mood pagenode
 
   }).catch(error => {
     console.log(error);
   })
 })
+
+
+app.get('/get_bmi', function(req, res) {
+  let userId=req.session.user.userId
+
+  db.any('SELECT userid,AVG(height) AS AVG_HGT,AVG(weight) AS AVG_WGT,date(date_time) FROM weight_records WHERE userid = $1 GROUP BY date(date_time), userid',[userId])
+    .then((result) => {
+      let heights = [];
+      let weights = [];
+      let dates = [];
+
+      let data = result;
+
+      for(i=0; i< data.length; i++) {
+        obj = data[i];
+        heights.push(Math.round(parseFloat(obj["avg_hgt"]), 2));
+        weights.push(Math.round(parseFloat(obj["avg_wgt"]), 2));
+        dates.push(obj["date"]);
+      }
+
+      res.status(200).json({'heights': heights, "weights": weights, "dates": dates})
+  }).catch(error => {
+    console.log(error);
+  })
+})
+
+app.get('/get_latest_bmi', function(req, res) {
+  let userId=req.session.user.userId
+
+  db.any('SELECT userid,height,weight,date_time FROM weight_records WHERE userid = $1 ORDER BY date_time DESC LIMIT 1',[userId])
+    .then((result) => {
+      res.status(200).json({'result': result[0]})
+  }).catch(error => {
+    console.log(error);
+  })
+})
+
+app.get('/bmi', (req, res) =>{
+  res.render('bmi',{message:NaN});
+});//if message exists then ejs displays a message
 
 
 
@@ -167,6 +222,37 @@ app.post('/registration',(req,res) => {
       console.log(error);
     })
   })
+
   
+  //game code starts here
+
+
+  app.get('/game', function(req, res){
+     res.render('game');
+});
+
+app.post('/set_game_score', function(req, res){
+  let game_score=req.body.game_score
+  let userId=req.session.user.userId
+  console.log(game_score);
+
+  db.none('INSERT INTO game_records (game_score,userid) VALUES($1,$2)',[game_score,userId])
+  .then(()=>{
+    res.render("home")//takes to home pagenode
+
+  }).catch(error => {
+    console.log(error);
+  })
+})
+
+
+
+
+
+
+
+
+
+
   
   

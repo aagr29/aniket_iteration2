@@ -150,7 +150,7 @@
     <script>
         $(document).on("change", ".emotion-record-btn", function() {
             $.post("/set_mood", {mood_score: parseInt($(this).data("emotion-type"))}, function(result){
-                window.location = "/";
+                window.location = "/home";
             });
 
 

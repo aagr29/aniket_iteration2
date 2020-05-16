@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>Login</title>
+
+    <!-- Icons font CSS-->
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <!-- Main CSS-->
+    <link href="bmi.css" rel="stylesheet" media="all">
+</head>
+<body>
+    <main>
+    <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+        <div class="bmi-container">
+            <div id="chart-container"></div>
+            <div class="bmi-info">
+                <div class="bmi">YOUR BMI IS: <span class="bmi-val"></span></div>
+            </div>
+        </div>
+    </div>
+</main>
+    <!-- Jquery JS-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/datepicker/moment.min.js"></script>
+    <script src="vendor/datepicker/daterangepicker.js"></script>
+    <script src="https://code.highcharts.com/highcharts.src.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $.get("/get_latest_bmi", function(result) {
+                var height = parseFloat(result.result['height']);
+                var weight = parseFloat(result.result['weight']);
+
+                var bmi = parseFloat((weight/(height*height)) * 10000).toFixed(2);
+
+                console.log("BMI:" + bmi);
+                $(".bmi-val").html(bmi);
+            });
+
+            $.get("/get_bmi", function(result) {
+                var bmi_data = result;
+
+                console.log(bmi_data["weights"]);
+
+                var chart = new Highcharts.Chart({
+                    chart: {
+                        renderTo: 'chart-container',
+                        marginBottom: 100
+                    },
+                    xAxis: {
+                        categories: bmi_data["dates"],
+                        labels: {
+                        rotation: 90
+                        }
+                    },
+
+                    series: [{
+                        name: "Weights",
+                        data: bmi_data["weights"]        
+                    }]
+                });
+            });
+        });
+    </script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->
